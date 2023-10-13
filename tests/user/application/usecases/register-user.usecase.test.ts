@@ -30,7 +30,7 @@ describe('RegisterUser', () => {
     );
   });
 
-  test('deberia lanzar un error cuando el usuario sea mayor de edad', async () => {
+  test('deberia lanzar un error cuando el usuario sea menor de edad', async () => {
     const userDto: UserDto = {
       type: { id: '1' },
       age: 17,
