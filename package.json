@@ -1,0 +1,23 @@
+{
+  "description": "",
+  "scripts": {
+    "start:dev": "nodemon -r dotenv/config --exec ts-node src/main.ts",
+    "test": "jest --coverage --forceExit --detectOpenHandles"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.19",
+    "@types/jest": "^29.5.5",
+    "@types/node": "^20.7.2",
+    "@types/pg": "^8.10.5",
+    "dotenv": "^16.3.1",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.11.3"
+  }
+}
