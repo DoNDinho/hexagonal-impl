@@ -1,6 +1,6 @@
 import { User } from '../../domain/entitties/user';
 import { UserRepository } from '../../domain/repositories/user-repository';
-import { PostgreClient } from '../../infrastructure/db/postgre.client';
+import { PostgreClient } from '../db/postgre.client';
 
 export class PostgreUserRepository implements UserRepository {
   constructor(private readonly postgreClient: PostgreClient) {

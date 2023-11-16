@@ -1,19 +1,24 @@
 import { RegisterUser } from './user/application/usecases/register-user.usecase';
 import { PostgreClient } from './user/infrastructure/db/postgre.client';
-import { PostgreUserRepository } from './user/infrastructure/repositories/postgre-user-repository';
+import { PostgresDbClient } from './user/infrastructure/db/typeorm/postgre-db.client';
+import { PostgreUserRepository } from './user/infrastructure/repositories/postgre-user.repository';
+import { TypeormUserRepository } from './user/infrastructure/repositories/typeorm-user.repository';
 import { UserController } from './user/infrastructure/server/controllers/user.controller';
 import { Server } from './user/infrastructure/server/server';
 
 async function main() {
   // * init db
-  const postgreClient = new PostgreClient();
-  await postgreClient.init();
+  // const postgreClient = new PostgreClient();
+  // await postgreClient.init();
+  const postgreDbClient = new PostgresDbClient();
+  await postgreDbClient.init();
 
   // * init repositories
-  const postgreUserRepository = new PostgreUserRepository(postgreClient);
+  // const postgreUserRepository = new PostgreUserRepository(postgreClient);
+  const typeormUserRepository = new TypeormUserRepository(postgreDbClient);
 
   // * init use cases
-  const registerUser = new RegisterUser(postgreUserRepository);
+  const registerUser = new RegisterUser(typeormUserRepository);
 
   // * init controllers
   const userController = new UserController(registerUser);
